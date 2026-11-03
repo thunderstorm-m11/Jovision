@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Form</title>
+</head>
+<body>
+  <input type="text" id="name" title="Name" placeholder="Name">
+  <input type="text" id="age" title="Age" placeholder="Age">
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    document.getElementById("submitBtn").addEventListener("click", function () {
+      const person = {
+        name: document.getElementById("name").value,
+        age: document.getElementById("age").value,
+        timestamp: new Date().toLocaleString()
+      };
+
+      const { name, age, timestamp } = person;
+
+      window.alert(`Your name is: ${name}\nYour age is: ${age}\nTimestamp: ${timestamp}`);
+    });
+  </script>
+</body>
+</html>
