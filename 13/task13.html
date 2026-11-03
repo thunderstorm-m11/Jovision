@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess Age</title>
+</head>
+<body>
+  <input type="text" id="name" title="Name" placeholder="Name">
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    document.getElementById("submitBtn").addEventListener("click", function () {
+      const enteredName = document.getElementById("name").value;
+      const url = `https://api.agify.io?name=${encodeURIComponent(enteredName)}`;
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const { name, age } = data;
+          window.alert(`Your name is: ${name}\nYour age is: ${age}`);
+        })
+        .catch(error => window.alert(error));
+    });
+  </script>
+</body>
+</html>
