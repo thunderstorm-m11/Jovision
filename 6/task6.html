@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Methods</title>
+</head>
+<body>
+  <button id="btn1">Button one</button>
+  <button id="btn2">Button two</button>
+  <button id="btn3">Button three</button>
+  <button id="btn4">Button four</button>
+  <button id="btn5">Button five</button>
+
+  <script>
+    function createArray() {
+      return Array.from({ length: 101 }, (_, i) => i);
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    document.getElementById("btn1").addEventListener("click", function () {
+      const arr = createArray();
+      const result = arr.filter(n => n % 3 !== 0);
+      console.log(result);
+    });
+
+    document.getElementById("btn2").addEventListener("click", function () {
+      const arr = createArray();
+      for (let i = 101; i <= 150; i++) {
+        arr.push(i);
+      }
+      console.log(arr);
+    });
+
+    document.getElementById("btn3").addEventListener("click", function () {
+      const arr = createArray();
+      const result = arr.map(n => n + 3);
+      console.log(result);
+    });
+
+    document.getElementById("btn4").addEventListener("click", function () {
+      const arr = createArray();
+      const result = arr.slice(20, 41);
+      console.log(result);
+    });
+
+    document.getElementById("btn5").addEventListener("click", function () {
+      const arr = createArray();
+      shuffleArray(arr);
+      console.log([...arr]);
+      arr.sort((a, b) => b - a);
+      console.log(arr);
+    });
+  </script>
+</body>
+</html>
